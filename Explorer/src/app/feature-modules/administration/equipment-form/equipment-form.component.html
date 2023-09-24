@@ -1,0 +1,16 @@
+<form>
+    <div>
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="username" type="text"/>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Type</mat-label>
+            <select matNativeControl required>
+              <option value="Obuca">Obuca</option>
+              <option value="Ski oprema">Ski oprema</option>
+            </select>
+          </mat-form-field>
+    <button color="primary" type="submit" mat-raised-button>Add</button>
+    </div>
+</form>
