@@ -1,25 +1,22 @@
 <div id="equipment">
     <p>Equipment</p>
     <hr>
-    <xp-equipment-form></xp-equipment-form>
+    <xp-equipment-form (equimpentUpdated)="getEquipment()"></xp-equipment-form>
     <table>
         <thead>
             <tr>
                 <th>Naziv</th>
-                <th>Tip</th>
+                <th>Opis</th>
+                <th></th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Patike</td>
-                <td>Obuca</td>
-                <td><button mat-raised-button color="accent">Delete</button></td>
-            </tr>
-            <tr>
-                <td>Bord</td>
-                <td>Ski oprema</td>
-                <td><button mat-raised-button color="accent">Delete</button></td>
+            <tr *ngFor="let eq of equipment">
+                <td>{{eq.name}}</td>
+                <td>{{eq.description}}</td>
+                <td><button mat-raised-button color="accent" (click)="deleteEquipment(eq.id || 0)">Delete</button></td>
+                <td><button mat-raised-button color="primary" (click)="onUpdateClicked(eq)">Edit</button></td>
             </tr>
         </tbody>
     </table>
