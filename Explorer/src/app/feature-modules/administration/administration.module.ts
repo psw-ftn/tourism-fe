@@ -5,15 +5,13 @@ import { EquipmentComponent } from './equipment/equipment.component';
 import { MaterialModule } from 'src/app/infrastructure/material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { UpdateEquipmentFormComponent } from './edit-equipment/update-equipment-form-component';
 
 
 
 @NgModule({
   declarations: [
     EquipmentFormComponent,
-    EquipmentComponent,
-    UpdateEquipmentFormComponent
+    EquipmentComponent
   ],
   imports: [
     CommonModule,

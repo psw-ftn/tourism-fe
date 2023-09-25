@@ -1,11 +1,10 @@
-form {
-    display: flex;
-    gap: 20px;
-}
-
 div {
     width: 400px;
     display:flex;
     gap: 20px;
-    align-items: baseline;
+    flex-direction: column;
+}
+
+.mat-icon {
+    vertical-align: middle;
 }

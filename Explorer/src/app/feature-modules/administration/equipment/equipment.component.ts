@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AdministrationService } from '../administration.service';
 import { Equipment } from '../model/equipment.model';
 import { PagedResults } from 'src/app/shared/model/paged-results.model';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { UpdateEquipmentFormComponent } from '../edit-equipment/update-equipment-form-component';
 
 
 @Component({
@@ -14,9 +12,11 @@ import { UpdateEquipmentFormComponent } from '../edit-equipment/update-equipment
 export class EquipmentComponent implements OnInit {
 
   equipment: Equipment[] = [];
+  selectedEquipment: Equipment;
+  shouldRenderEquipmentForm: boolean = false;
+  shouldEdit: boolean = false;
   
-
-  constructor(private service: AdministrationService, private dialog: MatDialog) { }
+  constructor(private service: AdministrationService) { }
 
   ngOnInit(): void {
     this.getEquipment();
@@ -24,7 +24,7 @@ export class EquipmentComponent implements OnInit {
   
   deleteEquipment(id: number): void {
     this.service.deleteEquipment(id).subscribe({
-      next: (result: Equipment) => {
+      next: () => {
         this.getEquipment();
       },
     })
@@ -35,20 +35,19 @@ export class EquipmentComponent implements OnInit {
       next: (result: PagedResults<Equipment>) => {
         this.equipment = result.results;
       },
-      error: (_) => {
+      error: () => {
       }
     })
   }
 
-  onUpdateClicked(equipment: Equipment): void {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.width = "700px"
-    dialogConfig.height = "100px"
-    dialogConfig.autoFocus = true;
-    dialogConfig.data = equipment 
-    const dialog = this.dialog.open(UpdateEquipmentFormComponent, dialogConfig);
-    dialog.afterClosed().subscribe(_ => {
-      this.getEquipment()
-    })
+  onEditClicked(equipment: Equipment): void {
+    this.selectedEquipment = equipment;
+    this.shouldRenderEquipmentForm = true;
+    this.shouldEdit = true;
+  }
+
+  onAddClicked(): void {
+    this.shouldEdit = false;
+    this.shouldRenderEquipmentForm = true;
   }
 }
