@@ -40,7 +40,7 @@ export class AuthService {
 
   checkIfUserExists(): void {
     const accessToken = this.tokenStorage.getAccessToken();
-    if (accessToken === null) {
+    if (accessToken == null) {
       return;
     }
     this.setUser();

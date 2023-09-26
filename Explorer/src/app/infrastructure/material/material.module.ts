@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatToolbar, MatToolbarModule,} from '@angular/material/toolbar';
-import {MatButton, MatButtonModule} from '@angular/material/button';
+import {MatButton, MatButtonModule, MatIconButton} from '@angular/material/button';
 import {MatFormField, MatFormFieldModule, MatLabel} from '@angular/material/form-field';
 import {MatInput, MatInputModule} from '@angular/material/input';
 import {MatTable, MatTableModule} from '@angular/material/table';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatIcon, MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -17,7 +17,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
-    MatDialogModule
+    MatIconModule
   ],
   exports: [
     MatToolbar,
@@ -26,7 +26,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatLabel,
     MatInput,
     MatTable,
-    MatDialogModule
+    MatIconButton,
+    MatIcon
   ]
 })
 export class MaterialModule { }

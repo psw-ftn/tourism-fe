@@ -4,7 +4,6 @@ import { EquipmentFormComponent } from './equipment-form/equipment-form.componen
 import { EquipmentComponent } from './equipment/equipment.component';
 import { MaterialModule } from 'src/app/infrastructure/material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 
 
@@ -21,10 +20,6 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   exports: [
     EquipmentComponent,
     EquipmentFormComponent
-  ],
-  providers: [
-    { provide: MAT_DIALOG_DATA, useValue: {} },
-    { provide: MatDialogRef, useValue: {} }
   ]
 })
 export class AdministrationModule { }
