@@ -9,7 +9,3 @@ div {
     display:flex;
     flex-direction: column;
 }
-
-p {
-    margin-top: 10px;
-}

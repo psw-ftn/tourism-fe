@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { AuthenticationResponse } from './login/model/authentication-response.model';
-import { Login } from './login/model/login.model';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { TokenStorage } from './jwt/token.service';
 import { environment } from 'src/env/environment';
-import { User } from './login/model/user.model';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Login } from './model/login.model';
+import { AuthenticationResponse } from './model/authentication-response.model';
+import { User } from './model/user.model';
+import { Registration } from './model/registration.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,17 @@ export class AuthService {
           this.setUser();
         })
       );
+  }
+
+  register(registration: Registration): Observable<AuthenticationResponse> {
+    return this.http
+    .post<AuthenticationResponse>(environment.apiHost + 'users', registration)
+    .pipe(
+      tap((authenticationResponse) => {
+        this.tokenStorage.saveAccessToken(authenticationResponse.accessToken);
+        this.setUser();
+      })
+    );
   }
 
   logout(): void {

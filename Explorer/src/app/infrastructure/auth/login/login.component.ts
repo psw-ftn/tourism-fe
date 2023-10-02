@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Login } from './model/login.model';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { Login } from '../model/login.model';
 
 @Component({
   selector: 'xp-login',
